@@ -1,0 +1,283 @@
+<%- include('partials/header') %>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="hero">
+  <div class="grain"></div>
+  <div class="hero__inner">
+    <div class="hero__content">
+      <p class="eyebrow">BATTLEFIELD ESSENTIALS PRESENTS</p>
+      <hr class="rule rule--short" />
+
+      <h1 class="hero__title">
+        <span class="fade-up" style="--d:0.05s">THE WAR WITHIN</span>
+        <span class="fade-up" style="--d:0.18s">HAS A FIELD MANUAL.</span>
+      </h1>
+
+      <p class="hero__sub fade-up" style="--d:0.32s">
+        A Corpsman's guide to equipping your nervous system — not fixing it.
+      </p>
+
+      <p class="hero__body fade-up" style="--d:0.42s">
+        Built for veterans, operators, and anyone who's been carrying it alone.
+        30 days. Six pillars. Seven tools. One system that actually works.
+      </p>
+
+      <div class="hero__cta fade-up" style="--d:0.52s">
+        <a href="#pricing" class="btn btn--primary">GET THE MANUAL</a>
+        <a href="#letter" class="btn btn--ghost">READ THE LETTER FROM BOBBY</a>
+      </div>
+    </div>
+
+    <div class="hero__cover fade-up" style="--d:0.4s">
+      <img
+        class="book-cover"
+        src="/images/book-cover.png"
+        width="1027" height="1531"
+        alt="Book cover: The Nervous System Field Manual — A Corpsman's Guide to the War Within, by Bobby L. Harris. Battlefield Essentials."
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. AUTHORITY BAR ============ -->
+<section class="authority">
+  <div class="authority__track">
+    <span class="authority__item"><span class="authority__icon">★</span> FMF Navy Corpsman</span>
+    <span class="authority__sep">|</span>
+    <span class="authority__item"><span class="authority__icon">⚕</span> OEF Veteran</span>
+    <span class="authority__sep">|</span>
+    <span class="authority__item"><span class="authority__icon">▮</span> Built from 18 Years of Field Testing</span>
+    <span class="authority__sep">|</span>
+    <span class="authority__item"><span class="authority__icon">✚</span> PTSD Recovery Survivor</span>
+  </div>
+</section>
+
+<!-- ============ 3. THE NORTH STAR ============ -->
+<section class="section north-star reveal" id="north-star">
+  <div class="container">
+    <p class="label">THE NORTH STAR</p>
+    <h2 class="display display--lg">
+      YOU ARE NOT BROKEN.<br />
+      YOUR NERVOUS SYSTEM IS STILL RUNNING ITS LAST SET OF ORDERS.
+    </h2>
+
+    <div class="prose">
+      <p>
+        Most of what you've been handed runs on <strong>repair logic</strong>: you're broken, here's
+        how to fix yourself. It treats your symptoms like a malfunction and you like a problem.
+        It never worked because it was never true.
+      </p>
+      <p>
+        This manual runs on <strong>resupply logic</strong>. Your nervous system isn't defective.
+        It's disciplined. It learned to stay ready under conditions that demanded it, and it's still
+        executing those orders long after the threat is gone.
+      </p>
+      <p>
+        You don't fix a unit that's running its training. You resupply it. You give it daily signals
+        that the mission has changed — that the threat is over. That's the whole job. Tools, used
+        daily, until the orders update.
+      </p>
+    </div>
+
+    <blockquote class="pullquote">
+      "Symptoms aren't good or bad. Tools used daily are the answer."
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ 4. LETTER FROM BOBBY ============ -->
+<section class="section letter-section reveal" id="letter">
+  <div class="container container--narrow">
+    <p class="label">LETTER FROM THE FOUNDER</p>
+    <h2 class="display">Read This First, Operator.</h2>
+
+    <article class="letter">
+      <p>I carried it for eighteen years before anyone gave it a name.</p>
+      <p>
+        I went to doctor after doctor. The answer was always the same word: <em>anxiety</em>.
+        Take this. Try that. Manage it. None of them looked at where it came from. None of them
+        looked at what my body was still doing in rooms that were already safe.
+      </p>
+      <p>
+        In 2023 I finally sat across from someone who did. CPT. EMDR. A real diagnosis: PTSD.
+        For the first time the thing I'd been fighting had a shape and a name.
+      </p>
+      <p><strong>That was the turn.</strong></p>
+      <p>
+        Once I understood my nervous system wasn't broken — that it was loyal, running orders I
+        never updated — everything changed. I stopped trying to fix myself. I started resupplying.
+        I built a kit. I tested it on my own body, every day, for years.
+      </p>
+      <p>
+        This manual is that kit. No theory you can't use by tonight. No clinical distance. Just the
+        tools that worked, written down the way I'd hand them to a fellow operator who was still
+        carrying it alone.
+      </p>
+      <p>You don't have to be the man you were thirty days ago. Let's get to work.</p>
+
+      <p class="letter__sign">— Bobby</p>
+      <p class="letter__creds">
+        FMF Navy Corpsman (2002–2009) &nbsp;|&nbsp; OEF Veteran &nbsp;|&nbsp; Founder, Battlefield Essentials
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 5. WHAT'S INSIDE — SIX PILLARS ============ -->
+<section class="section pillars-section reveal" id="whats-inside">
+  <div class="container">
+    <p class="label">THE OPERATIONAL SYSTEM</p>
+    <h2 class="display">Six Pillars. Thirty Days. One Working Kit.</h2>
+
+    <div class="pillars">
+      <% const pillars = [
+        ['1','ORIENT','The 90-Second Reset. Prove to yourself on Day 1 that your nervous system can be reached.'],
+        ['2','ASSESS','The Symptom-to-Tool Triage Chart. Match the right tool to the right symptom in real time.'],
+        ['3','EQUIP','The Seven-Tool Kit. Your full arsenal. Know which three are yours.'],
+        ['4','EXECUTE','The 45-Minute Operator System. Stop running a 12-hour shift. Run sixteen 45-minute operations.'],
+        ['5','SUSTAIN','The Two-Sentence Containment Practice. Rebuild the wire between mission and home.'],
+        ['6','ADAPT','The Personal Field Update. Your monthly after-action review. The kit gets sharper every cycle.']
+      ]; %>
+      <% pillars.forEach(function(p){ %>
+        <article class="pillar reveal">
+          <div class="pillar__badge"><%= p[0] %></div>
+          <h3 class="pillar__name">PILLAR <%= p[0] %> — <%= p[1] %></h3>
+          <p class="pillar__desc"><%= p[2] %></p>
+        </article>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. THE SEVEN TOOLS ============ -->
+<section class="section tools-section reveal" id="tools">
+  <div class="container">
+    <p class="label">THE TOOLKIT</p>
+    <h2 class="display">Seven Tools. Pick Three. Carry Three. Master Three.</h2>
+
+    <ol class="tools">
+      <% const tools = [
+        ['90-Second Visual Orienting Reset','Baseline tension, pre-shift dread'],
+        ['Long Exhale Stack (4-in / 8-out)','0300 wake-up, sleep, anxiety spike'],
+        ['Box Breathing (4-4-4-4)','Pre-shift, focus reset, pre-confrontation'],
+        ['5-4-3-2-1 Sensory Grounding','Irritability, dissociation, spiral'],
+        ['Physical Contact Drill','Dissociation, numbness, floating'],
+        ['Bilateral Movement Drill','Brain fog, stuck, transitions'],
+        ['One-Sentence Containment Write','End of shift, before bed']
+      ]; %>
+      <% tools.forEach(function(t, i){ %>
+        <li class="tool reveal">
+          <span class="tool__num"><%= i + 1 %></span>
+          <div class="tool__body">
+            <h3 class="tool__name"><%= t[0] %></h3>
+            <p class="tool__use"><%= t[1] %></p>
+          </div>
+        </li>
+      <% }); %>
+    </ol>
+
+    <blockquote class="pullquote pullquote--center">
+      "When in doubt, run Tool 1. Always free. Always works."
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ 7. WHO THIS IS FOR ============ -->
+<section class="section unit-section reveal" id="who">
+  <div class="container">
+    <p class="label">YOUR UNIT</p>
+    <h2 class="display">Built for Anyone Carrying It Alone.</h2>
+
+    <div class="unit-grid">
+      <% const unit = [
+        ['🪖','Veterans'],
+        ['⚓','Active-Duty Military'],
+        ['🚒','First Responders'],
+        ['🏋️','Tactical Athletes'],
+        ['💼','Shift Workers'],
+        ['🧠','Diagnosed or Suspected PTSD']
+      ]; %>
+      <% unit.forEach(function(u){ %>
+        <div class="unit reveal">
+          <span class="unit__icon"><%= u[0] %></span>
+          <span class="unit__label"><%= u[1] %></span>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. WHAT YOU WILL HAVE ============ -->
+<section class="section deliverables-section reveal" id="deliverables">
+  <div class="container container--narrow">
+    <p class="label">THE DELIVERABLES</p>
+    <h2 class="display">By Day 30, You Will Have:</h2>
+
+    <ul class="checklist">
+      <% const deliverables = [
+        'A personalized triage chart matched to your five most common symptoms',
+        'Three tools you have run on your own body more than fifteen times each',
+        'A shift map for the operation you actually live',
+        'A two-sentence log you can read back to yourself',
+        'A written debrief of what changed',
+        'Proof, in your own handwriting, that you are not the same man you were 30 days ago'
+      ]; %>
+      <% deliverables.forEach(function(d){ %>
+        <li class="check reveal"><span class="check__mark">✓</span><span><%= d %></span></li>
+      <% }); %>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 9. PRICING / CTA ============ -->
+<section class="section pricing-section reveal" id="pricing">
+  <div class="container">
+    <p class="label">DEPLOY THE KIT</p>
+    <h2 class="display">Get the Manual. Run the Kit.</h2>
+
+    <div class="pricing">
+      <article class="price-card price-card--featured reveal">
+        <div class="price-card__flag">RECOMMENDED</div>
+        <h3 class="price-card__name">Digital Edition</h3>
+        <p class="price-card__price">$27</p>
+        <ul class="price-card__list">
+          <li>Instant PDF download</li>
+          <li>All six pillars + worksheets</li>
+          <li>Printable Quick Reference Card</li>
+        </ul>
+        <a href="#" class="btn btn--primary btn--block">DOWNLOAD NOW</a>
+      </article>
+
+      <article class="price-card reveal">
+        <div class="price-card__flag price-card__flag--soon">COMING SOON</div>
+        <h3 class="price-card__name">Print Edition</h3>
+        <p class="price-card__price">$34</p>
+        <ul class="price-card__list">
+          <li>Physical field manual</li>
+          <li>Same content, physical carry format</li>
+          <li>Built to live in your ruck</li>
+        </ul>
+        <a href="#" class="btn btn--ghost btn--block">NOTIFY ME</a>
+      </article>
+    </div>
+
+    <p class="guarantee">
+      30-day satisfaction guarantee. No BS.<br />
+      If the kit doesn't deliver, send one sentence and we'll refund it.
+    </p>
+
+    <!-- ============ 10. CRISIS NOTICE ============ -->
+    <aside class="crisis" role="note">
+      <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
+      <p>
+        This manual is not crisis intervention. If you are thinking about ending your life,
+        call the Veterans Crisis Line: dial <strong>988</strong> and press <strong>1</strong>,
+        or text <strong>838255</strong>.
+      </p>
+      <p class="crisis__close">The kit will be here. You have to be here first.</p>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

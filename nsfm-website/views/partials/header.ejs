@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <meta name="description" content="<%= meta_description %>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand">
+        BATTLEFIELD<span class="nav__brand-accent">ESSENTIALS</span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#whats-inside">THE MANUAL</a>
+        <a href="#tools">THE TOOLS</a>
+        <a href="#letter">BOBBY'S LETTER</a>
+        <a href="#pricing" class="nav__cta">GET IT</a>
+      </nav>
+    </div>
+  </header>

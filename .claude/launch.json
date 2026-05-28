@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nsfm-website (production)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "nsfm-website", "start"],
+      "port": 3000
+    },
+    {
+      "name": "nsfm-website (dev / nodemon)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "nsfm-website", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}
