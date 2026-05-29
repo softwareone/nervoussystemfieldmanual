@@ -8,6 +8,7 @@ npm-debug.log*
 # Environment
 .env
 .env.*
+!.env.production
 
 # OS
 .DS_Store
