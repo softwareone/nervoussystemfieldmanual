@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<%
+  const messages = {
+    invalid: "This link doesn't exist. If you believe this is an error, contact us below.",
+    expired: "This link has expired (48-hour window). Contact support to request a new one.",
+    exhausted: "This link has been used the maximum number of times. Contact support if you need access."
+  };
+  const headline = {
+    invalid: 'Link Not Found.',
+    expired: 'Link Expired.',
+    exhausted: 'Download Limit Reached.'
+  };
+%>
+
+<section class="section message-section">
+  <div class="container container--narrow">
+    <p class="label">LINK UNAVAILABLE</p>
+    <h2 class="display"><%= headline[reason] || 'Link Unavailable.' %></h2>
+
+    <div class="prose">
+      <p><%= messages[reason] || messages.invalid %></p>
+      <p>
+        Contact <a href="mailto:support@battlefieldessentials.com" class="inline-link">support@battlefieldessentials.com</a>
+        and we'll get you sorted.
+      </p>
+    </div>
+
+    <div class="message-section__cta">
+      <a href="/" class="btn btn--ghost">BACK TO HOME</a>
+    </div>
+
+    <aside class="crisis" role="note">
+      <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
+      <p>
+        This manual is not crisis intervention. If you are thinking about ending your life,
+        call the Veterans Crisis Line: dial <strong>988</strong> and press <strong>1</strong>,
+        or text <strong>838255</strong>.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

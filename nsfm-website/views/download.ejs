@@ -1,0 +1,46 @@
+<%- include('partials/header') %>
+
+<section class="section checkout-section">
+  <div class="container">
+    <p class="label">DELIVERY</p>
+    <h2 class="display">Your Manual Is Ready.</h2>
+
+    <div class="checkout">
+      <div class="checkout__cover">
+        <img
+          class="book-cover"
+          src="/images/book-cover.png"
+          width="1027" height="1531"
+          alt="<%= pdf_name %>"
+        />
+      </div>
+
+      <div class="checkout__panel">
+        <p class="checkout__edition"><%= pdf_name %></p>
+
+        <a href="/download/<%= token %>/file" class="btn btn--primary btn--block">DOWNLOAD NOW</a>
+
+        <div class="meta-box">
+          <p>Downloads remaining: <strong><%= uses_remaining %></strong></p>
+          <p>Link expires: <strong><%= new Date(expires_at).toLocaleString() %></strong></p>
+        </div>
+
+        <p class="prose">
+          Save it to your phone, laptop, and a cloud folder. Don't lose it —
+          this link goes dead after your downloads run out or the window closes.
+        </p>
+      </div>
+    </div>
+
+    <aside class="crisis" role="note">
+      <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
+      <p>
+        This manual is not crisis intervention. If you are thinking about ending your life,
+        call the Veterans Crisis Line: dial <strong>988</strong> and press <strong>1</strong>,
+        or text <strong>838255</strong>.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

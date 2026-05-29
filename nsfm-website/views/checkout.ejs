@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<section class="section checkout-section">
+  <div class="container">
+    <p class="label">DEPLOY THE KIT</p>
+    <h2 class="display">Get the Manual.</h2>
+
+    <div class="checkout">
+      <div class="checkout__cover">
+        <img
+          class="book-cover"
+          src="/images/book-cover.png"
+          width="1027" height="1531"
+          alt="The Nervous System Field Manual — Digital Edition"
+        />
+      </div>
+
+      <div class="checkout__panel">
+        <p class="checkout__edition">DIGITAL EDITION</p>
+        <p class="checkout__price">$27</p>
+
+        <ul class="checklist checkout__list">
+          <li class="check"><span class="check__mark">✓</span><span>Instant PDF download</span></li>
+          <li class="check"><span class="check__mark">✓</span><span>All six pillars + worksheets</span></li>
+          <li class="check"><span class="check__mark">✓</span><span>Printable Quick Reference Card</span></li>
+        </ul>
+
+        <button id="checkout-btn" class="btn btn--primary btn--block" type="button">
+          SECURE CHECKOUT — $27
+        </button>
+        <p class="checkout__error" id="checkout-error" role="alert" aria-live="polite"></p>
+
+        <div class="checkout__trust">
+          <span>🔒 Processed securely by Stripe</span>
+          <span>30-day satisfaction guarantee</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="crisis" role="note">
+      <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
+      <p>
+        This manual is not crisis intervention. If you are thinking about ending your life,
+        call the Veterans Crisis Line: dial <strong>988</strong> and press <strong>1</strong>,
+        or text <strong>838255</strong>.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<script src="/js/checkout.js"></script>
+<%- include('partials/footer') %>

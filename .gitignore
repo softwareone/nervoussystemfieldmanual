@@ -9,6 +9,14 @@ npm-debug.log*
 .env
 .env.*
 !.env.production
+!.env.example
+
+# SQLite database (auto-created at runtime)
+**/db/*.db
+**/db/*.db-*
+
+# The paid product PDF — never commit it to the repo
+**/private/*.pdf
 
 # OS
 .DS_Store
