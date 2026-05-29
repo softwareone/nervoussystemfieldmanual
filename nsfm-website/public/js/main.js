@@ -38,4 +38,57 @@
   } else {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
+
+  // ----- Newsletter signup -----
+  var form = document.getElementById('newsletterForm');
+  var input = document.getElementById('newsletterEmail');
+  var status = document.getElementById('newsletterStatus');
+
+  if (form && input && status) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var btn = form.querySelector('button[type="submit"]');
+      var email = input.value.trim();
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setStatus('Please enter a valid email address.', 'error');
+        return;
+      }
+
+      btn.disabled = true;
+      setStatus('Standing by…', '');
+
+      fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            setStatus(result.data.message || "You're on the list.", 'success');
+            form.reset();
+          } else {
+            setStatus(result.data.error || 'Something went wrong. Please try again.', 'error');
+          }
+        })
+        .catch(function () {
+          setStatus('Network error. Please try again.', 'error');
+        })
+        .finally(function () {
+          btn.disabled = false;
+        });
+    });
+  }
+
+  function setStatus(msg, kind) {
+    if (!status) return;
+    status.textContent = msg;
+    status.className = 'newsletter-form__status' + (kind ? ' is-' + kind : '');
+  }
 })();

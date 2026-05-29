@@ -280,4 +280,32 @@
   </div>
 </section>
 
+<!-- ============ 11. NEWSLETTER SIGNUP ============ -->
+<section class="section newsletter-section reveal" id="newsletter">
+  <div class="container container--narrow">
+    <p class="label">STAY IN FORMATION</p>
+    <h2 class="display">Get the Field Updates.</h2>
+    <p class="newsletter__copy">
+      New tools, launch news, and the print edition drop — straight to your inbox.
+      No spam. Stand down anytime.
+    </p>
+
+    <form class="newsletter-form" id="newsletterForm" novalidate>
+      <label class="visually-hidden" for="newsletterEmail">Email address</label>
+      <input
+        class="newsletter-form__input"
+        id="newsletterEmail"
+        name="email"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="you@example.com"
+        required
+      />
+      <button class="btn btn--primary newsletter-form__btn" type="submit">ENLIST</button>
+    </form>
+    <p class="newsletter-form__status" id="newsletterStatus" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
 <%- include('partials/footer') %>
