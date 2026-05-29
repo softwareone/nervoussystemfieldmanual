@@ -87,8 +87,8 @@ async function sendDownloadEmail({ email, name, downloadUrl, maxUses, expiryHour
     </div>
   </div>
   <div class="footer">
-    <p>Battlefield Essentials &nbsp;|&nbsp; battlefieldessentials.com</p>
-    <p>support@battlefieldessentials.com</p>
+    <p>Battlefield Essentials &nbsp;|&nbsp; nervoussystemfieldmanual.com</p>
+    <p>support@nervoussystemfieldmanual.com</p>
     <p>You purchased The Nervous System Field Manual. This is your order confirmation and delivery email.</p>
     <p>Forged by Discipline.</p>
   </div>
