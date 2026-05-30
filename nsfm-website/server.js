@@ -1,7 +1,10 @@
-require('dotenv').config();
+const path = require('path');
+// Load .env from this file's directory, not process.cwd().
+// Under Passenger/Hostinger the cwd may differ from the app root, so an
+// unqualified dotenv.config() silently fails to find the file.
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const express = require('express');
-const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
