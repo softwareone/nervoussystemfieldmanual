@@ -31,11 +31,11 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", 'https://js.stripe.com'],
+        scriptSrc: ["'self'", 'https://js.stripe.com', 'https://connect.facebook.net'],
         styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
         fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-        imgSrc: ["'self'", 'data:'],
-        connectSrc: ["'self'", 'https://api.stripe.com'],
+        imgSrc: ["'self'", 'data:', 'https://www.facebook.com'],
+        connectSrc: ["'self'", 'https://api.stripe.com', 'https://www.facebook.com', 'https://connect.facebook.net'],
         frameSrc: ['https://js.stripe.com', 'https://hooks.stripe.com'],
         formAction: ["'self'", 'https://checkout.stripe.com'],
         objectSrc: ["'none'"]
