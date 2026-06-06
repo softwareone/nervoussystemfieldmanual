@@ -5,6 +5,7 @@ const db = require('../lib/db');
 const { stripe, webhookSecret } = require('../lib/stripe');
 const { sendDownloadEmail } = require('../lib/mailer');
 const { createKlaviyoContact } = require('../lib/klaviyo');
+const { sendPurchaseEvent } = require('../lib/meta-capi');
 
 // Mounted in server.js with express.raw() BEFORE express.json():
 //   app.use('/webhook', express.raw({ type: 'application/json' }), webhookRouter);
@@ -21,6 +22,11 @@ const insertToken = db.prepare(`
   VALUES (?, ?, ?, ?, ?)
 `);
 const findOrder = db.prepare('SELECT id FROM orders WHERE stripe_session_id = ?');
+const insertCapiEvent = db.prepare(`
+  INSERT INTO meta_capi_events
+    (stripe_session_id, event_id, status, http_status, fb_trace_id, response_excerpt, error)
+  VALUES (?, ?, ?, ?, ?, ?, ?)
+`);
 
 // Order insert + token insert happen atomically so a failure can't leave a half-fulfilled order.
 const fulfill = db.transaction((session, token, expiresAt) => {
@@ -83,6 +89,27 @@ router.post('/', async (req, res) => {
       createKlaviyoContact({ email: customerEmail, name: customerName }).catch((err) =>
         console.error('Klaviyo sync failed:', err)
       );
+
+      // Fire Meta CAPI Purchase fire-and-forget — never block the 200 to Stripe.
+      sendPurchaseEvent({ session, eventId: session.id })
+        .then((result) => {
+          const status = result.skipped ? 'skipped' : result.ok ? 'sent' : 'failed';
+          insertCapiEvent.run(
+            session.id,
+            session.id,
+            status,
+            result.status ?? null,
+            result.fbTraceId ?? null,
+            result.body ?? null,
+            result.error ?? null
+          );
+          if (result.ok) {
+            console.log(`✓ Meta CAPI Purchase sent: ${session.id}`);
+          } else if (!result.skipped) {
+            console.error(`Meta CAPI Purchase failed (${session.id}):`, result.error || result.body);
+          }
+        })
+        .catch((err) => console.error('Meta CAPI post-processing error:', err));
 
       console.log(`✓ Order fulfilled: ${customerEmail} → token ${token}`);
     } catch (err) {

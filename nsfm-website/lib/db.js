@@ -33,6 +33,18 @@ db.exec(`
     last_used_at DATETIME,
     ip_addresses TEXT DEFAULT '[]'
   );
+
+  CREATE TABLE IF NOT EXISTS meta_capi_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    stripe_session_id TEXT,
+    event_id TEXT,
+    status TEXT,
+    http_status INTEGER,
+    fb_trace_id TEXT,
+    response_excerpt TEXT,
+    error TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
 `);
 
 module.exports = db;
