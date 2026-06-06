@@ -54,3 +54,63 @@ test('buildPurchasePayload includes test_event_code when env set', () => {
   assert.equal(payload.test_event_code, 'TEST12345');
   delete process.env.META_TEST_EVENT_CODE;
 });
+
+const { sendPurchaseEvent } = require('../lib/meta-capi');
+
+function withFetch(fn) {
+  const original = global.fetch;
+  global.fetch = fn;
+  return () => { global.fetch = original; };
+}
+
+test('sendPurchaseEvent skips when not configured', async () => {
+  const restore = withFetch(async () => { throw new Error('should not be called'); });
+  delete process.env.META_PIXEL_ID;
+  delete process.env.META_CAPI_ACCESS_TOKEN;
+
+  const result = await sendPurchaseEvent({ session: sampleSession, eventId: 'x' });
+  assert.equal(result.skipped, true);
+  assert.equal(result.ok, false);
+  restore();
+});
+
+test('sendPurchaseEvent POSTs and returns parsed result on success', async () => {
+  process.env.META_PIXEL_ID = '26871724739163641';
+  process.env.META_CAPI_ACCESS_TOKEN = 'token_abc';
+  process.env.META_API_VERSION = 'v21.0';
+
+  let calledUrl;
+  let calledInit;
+  const restore = withFetch(async (url, init) => {
+    calledUrl = url;
+    calledInit = init;
+    return {
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ events_received: 1, fbtrace_id: 'trace_xyz' }),
+    };
+  });
+
+  const result = await sendPurchaseEvent({ session: sampleSession, eventId: 'cs_test_123' });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.status, 200);
+  assert.equal(result.fbTraceId, 'trace_xyz');
+  assert.match(calledUrl, /graph\.facebook\.com\/v21\.0\/26871724739163641\/events/);
+  assert.match(calledUrl, /access_token=token_abc/);
+  assert.equal(calledInit.method, 'POST');
+  const sentBody = JSON.parse(calledInit.body);
+  assert.equal(sentBody.data[0].event_id, 'cs_test_123');
+  restore();
+});
+
+test('sendPurchaseEvent returns error object on network failure', async () => {
+  process.env.META_PIXEL_ID = '26871724739163641';
+  process.env.META_CAPI_ACCESS_TOKEN = 'token_abc';
+  const restore = withFetch(async () => { throw new Error('boom'); });
+
+  const result = await sendPurchaseEvent({ session: sampleSession, eventId: 'x' });
+  assert.equal(result.ok, false);
+  assert.equal(result.error, 'boom');
+  restore();
+});
