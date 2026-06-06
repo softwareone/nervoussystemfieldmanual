@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Local environment files (never commit secrets)
+.env
+.env.local
+.env.*.local
+nsfm-website.env
+
+# Intentionally tracked public config — do NOT ignore:
+#   .env.example      (template, no secrets)
+#   .env.production   (NEXT_PUBLIC_* values only — browser-safe)
+!.env.example
+!.env.production
+
+# Logs & runtime
+*.log
+*.sqlite
+*.sqlite3
