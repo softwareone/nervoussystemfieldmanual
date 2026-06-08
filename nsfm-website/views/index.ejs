@@ -119,7 +119,11 @@
   .col li .m{flex:none;margin-top:2px;font-family:"Oswald";font-weight:700;font-size:13px}
   .col.yes li .m{color:var(--gold)}
   .col.no li .m{color:var(--muted-2)}
-  .founder{margin-top:54px;border:1px solid var(--line);background:rgba(255,255,255,.02);padding:34px 36px;max-width:920px;position:relative}
+  .founder{margin-top:54px;border:1px solid var(--line);background:rgba(255,255,255,.02);padding:34px 36px;max-width:920px;position:relative;display:flex;gap:30px;align-items:flex-start}
+  .founder__photo{flex:none;width:200px}
+  .founder__photo img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:3px}
+  .founder__text{flex:1;min-width:0}
+  @media (max-width:640px){.founder{flex-direction:column;gap:22px}.founder__photo{width:150px}}
   .founder::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold),transparent)}
   .founder p{font-family:"Barlow";font-style:italic;font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:#d8d1c5}
   .founder .sig{font-family:"Oswald";font-style:normal;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);font-size:14px;margin-top:20px;display:block}
@@ -324,8 +328,11 @@
       </div>
 
       <div class="founder" id="letter">
+        <figure class="founder__photo"><img src="/images/bobby-harris.jpg" alt="Bobby L. Harris, FMF Navy Corpsman and author of The Nervous System Field Manual." width="200" height="250" loading="lazy"></figure>
+        <div class="founder__text">
         <p>I didn't build this from a case study or a certification alone. I built it because I was the person cycling through the appointments, collecting the diagnoses, and leaving every session with the same body I brought in. What I eventually realized wasn't a breakthrough insight — it was a missing layer: nobody had ever worked with me at the level where the activation actually lived. What I built is the toolkit I couldn't find when I needed it.</p>
         <span class="sig">— Bobby L. Harris, FMF Navy Corpsman</span>
+        </div>
       </div>
     </div>
   </section>
