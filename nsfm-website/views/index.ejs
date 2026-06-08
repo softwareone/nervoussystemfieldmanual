@@ -1,30 +1,30 @@
 <%- include('partials/header') %>
 
-<!-- ============ 1. HERO ============ -->
+<!-- ============ ZONE 1 — THE HOOK ============ -->
 <section class="hero" id="hero">
   <div class="grain"></div>
   <div class="hero__inner">
     <div class="hero__content">
-      <p class="eyebrow">BATTLEFIELD ESSENTIALS PRESENTS</p>
+      <p class="eyebrow">WRITTEN BY AN FMF NAVY CORPSMAN</p>
       <hr class="rule rule--short" />
 
       <h1 class="hero__title">
-        <span class="fade-up" style="--d:0.05s">THE WAR WITHIN</span>
-        <span class="fade-up" style="--d:0.18s">HAS A FIELD MANUAL.</span>
+        <span class="fade-up" style="--d:0.05s">A CORPSMAN'S GUIDE TO</span>
+        <span class="fade-up" style="--d:0.18s">LISTENING TO YOUR NERVOUS SYSTEM.</span>
       </h1>
 
       <p class="hero__sub fade-up" style="--d:0.32s">
-        A Corpsman's guide to equipping your nervous system — not fixing it.
+        The war within finally has a field manual.
       </p>
 
       <p class="hero__body fade-up" style="--d:0.42s">
-        Built for veterans, operators, and anyone who's been carrying it alone.
-        30 days. Six pillars. Seven tools. One system that actually works.
+        Six Pillars. Seven Tools. 30 days. A field-tested nervous system protocol
+        created by a Navy FMF Corpsman who spent 18 years struggling with PTSD. <strong>$27.</strong>
       </p>
 
       <div class="hero__cta fade-up" style="--d:0.52s">
-        <a href="/checkout" class="btn btn--primary">GET THE MANUAL</a>
-        <a href="#letter" class="btn btn--ghost">READ THE LETTER FROM BOBBY</a>
+        <a href="/checkout" class="btn btn--primary">GET THE MANUAL — $27</a>
+        <a href="#mechanism" class="btn btn--ghost">SEE HOW IT WORKS</a>
       </div>
     </div>
 
@@ -40,110 +40,128 @@
   </div>
 </section>
 
-<!-- ============ 2. AUTHORITY BAR ============ -->
+<!-- ============ AUTHORITY BAR ============ -->
 <section class="authority">
   <div class="authority__track">
     <span class="authority__item"><span class="authority__icon">★</span> FMF Navy Corpsman</span>
     <span class="authority__sep">|</span>
     <span class="authority__item"><span class="authority__icon">⚕</span> OEF Veteran</span>
     <span class="authority__sep">|</span>
-    <span class="authority__item"><span class="authority__icon">▮</span> Built from 18 Years of Field Testing</span>
+    <span class="authority__item"><span class="authority__icon">▮</span> 18 Years of Field Testing</span>
     <span class="authority__sep">|</span>
     <span class="authority__item"><span class="authority__icon">✚</span> PTSD Recovery Survivor</span>
   </div>
 </section>
 
-<!-- ============ 3. THE NORTH STAR ============ -->
-<section class="section north-star reveal" id="north-star">
-  <div class="container">
-    <p class="label">THE NORTH STAR</p>
-    <h2 class="display display--lg">
-      Healing doesn't start in your head alone.<br />
-      It starts by listening to the body.
-    </h2>
+<!-- ============ ZONE 2 — THE MIRROR ============ -->
+<section class="section mirror-section reveal" id="mirror">
+  <div class="container container--narrow">
+    <p class="label">THE REALITY</p>
+    <h2 class="display">You Did Everything Right. Your Body Didn't Get the Memo.</h2>
 
     <div class="prose">
       <p>
-        Traditional talk therapy is often <strong>top-down</strong>. It helps you understand your
-        emotions, patterns, and behaviors through insight and reflection. That can be valuable, but
-        it doesn't always reach the parts of you that are still holding stress, tension, or trauma
-        in the body.
+        You've done everything right on paper. You showed up to the appointments. You took the
+        medications they offered and waited six weeks to find out they flattened everything without
+        fixing anything. You sat in the chair, told the story again, gained the insight, and walked
+        out with the same body you walked in with — still braced, still scanning, still wired for a
+        threat that isn't there anymore. You've cycled through enough providers that you've stopped
+        expecting anything new. And somewhere underneath the exhaustion, you've started to wonder if
+        this is just who you are now — if something in you got permanently altered, and the rest of
+        your life is just managing it.
       </p>
+    </div>
+
+    <p class="label" style="margin-top:40px">ALMOST.</p>
+    <div class="prose">
       <p>
-        The field manual takes a <strong>bottom-up</strong> approach. Instead of starting with
-        analysis, it starts with sensation. By noticing what your body is holding, you can help
-        regulate your nervous system, release stored stress, and process emotional pain more deeply.
-      </p>
-      <p>
-        This is the shift: from understanding pain only in your head to helping the body feel safe
-        enough to let it move through.
+        In 2023 you finally got a diagnosis — a real one, with structure and language that fit — and
+        for about a week it felt like the beginning of something, until you realized a name for the
+        weight doesn't make it lighter.
       </p>
     </div>
 
     <blockquote class="pullquote">
-      "Symptoms aren't good or bad. They're signals. The job isn't repair. It's learning to read what your body is still trying to tell you."
+      The diagnosis isn't wrong. The approach is.
     </blockquote>
+
+    <div class="prose">
+      <p>
+        Talk therapy and medication are top-down interventions — they work through the thinking mind,
+        and your nervous system doesn't live there. Your nervous system isn't broken. It was trained.
+        Precisely, effectively, and successfully trained — for an environment that no longer exists.
+        That's not a defect. That's a mismatch. And mismatches can be corrected.
+      </p>
+      <p><strong>Here's what correcting it actually feels like:</strong></p>
+    </div>
+
+    <ul class="checklist">
+      <% const correcting = [
+        'Waking up without running a threat assessment of your own bedroom before your feet hit the floor',
+        'Sitting in a crowded room without every exit already mapped and every person already categorized',
+        'Feeling your shoulders drop — not because you told yourself to relax, but because your system actually stopped bracing',
+        'Having a hard conversation without your body treating it like a contact engagement',
+        'Sleeping through a noise that isn\'t a threat, because your nervous system finally knows the difference'
+      ]; %>
+      <% correcting.forEach(function(c){ %>
+        <li class="check reveal"><span class="check__mark">✓</span><span><%= c %></span></li>
+      <% }); %>
+    </ul>
   </div>
 </section>
 
-<!-- ============ 4. LETTER FROM BOBBY ============ -->
-<section class="section letter-section reveal" id="letter">
-  <div class="container container--narrow">
-    <p class="label">LETTER FROM THE AUTHOR</p>
-    <h2 class="display">What I Wish Someone Had Told Me.</h2>
+<!-- ============ ZONE 3 — THE MECHANISM ============ -->
+<section class="section mechanism-section reveal" id="mechanism">
+  <div class="container">
+    <p class="label">THE MECHANISM</p>
+    <h2 class="display">We Go Straight to the Body.</h2>
 
-    <article class="letter letter--with-photo">
-      <figure class="letter__portrait">
-        <img src="/images/bobby-harris.jpg" width="800" height="999" loading="lazy"
-             alt="Bobby L. Harris, FMF Navy Corpsman and founder of Battlefield Essentials.">
-      </figure>
-      <div class="letter__body">
-      <p>For eighteen years, I carried this weight without being able to name it.</p>
+    <div class="prose">
       <p>
-        I went from doctor to doctor. Same answer every time: <em>anxiety</em>, medication, come back
-        in six weeks. Door after door closed without anyone actually explaining why my body kept
-        reacting the same way in places where nothing was threatening me anymore.
+        While everyone else tries to reach the nervous system through the mind — through reflection,
+        reframing, and cognitive insight — we go straight to the body, because the nervous system
+        processes sensation before it processes language, and you cannot think your way out of a
+        state your body is still physically holding.
       </p>
-      <p>
-        In 2023, a social worker finally sat across from me and helped me find the right words. For
-        the first time, what I'd been fighting had structure, context, and a name.
-        <strong>That was the turn.</strong>
-      </p>
-      <p>
-        Maybe you already have that name. Maybe you've had it for years and it still hasn't been
-        enough. Either way, you're in the right place.
-      </p>
-      <p>
-        What changed for me wasn't just the diagnosis. It was understanding that my nervous system
-        wasn't broken. It was trained. I was trained to adapt to war. I wasn't trained to adapt to
-        civilian life again. So I stopped trying to force it to repair and started learning to read
-        what it was still trying to tell me. I built a kit. Then I tested it on my own body, day
-        after day, for years.
-      </p>
-      <p>
-        This manual is that kit. These tools worked for me. They may not all land the same way for
-        you, and that's okay. Take what fits. No prerequisites. No steps you have to complete in
-        order. No theory you need a classroom to understand. Just the tools that worked, written for
-        the person who has been carrying this weight and is still standing.
-      </p>
-      <p>
-        I don't know where you are in this. But these tools are here when you need them. Come back
-        whenever you're ready.
-      </p>
+    </div>
 
-      <p class="letter__sign">Bobby L. Harris</p>
-      <p class="letter__creds">
-        FMF Navy Corpsman (2002–2009) &nbsp;|&nbsp; OEF Veteran &nbsp;|&nbsp; Founder, Battlefield Essentials
+    <blockquote class="pullquote pullquote--center">
+      That's not a philosophy. It's physiology.
+    </blockquote>
+
+    <div class="prose">
+      <p>
+        Everything named above — the cycling, the failed protocols, the 2 a.m. body that won't stand
+        down, the diagnosis that explained everything and changed nothing — points to the same gap:
+        nobody ever gave you tools that work at the level where the activation actually lives. The
+        <strong>Nervous System Regulation Protocol — Six Pillars, Seven Tools, Thirty Days</strong>
+        is the direct answer to that gap. Not a framework for understanding your trauma. A working
+        toolkit for regulating the system that's been carrying it.
       </p>
-      </div>
-    </article>
+    </div>
+
+    <h3 class="subhead">The Three Phases</h3>
+    <div class="pillars">
+      <% const phases = [
+        ['1','PHASE 1 — CONTACT','You prove to yourself on Day 1 that your nervous system can be reached — using the 90-Second Reset, a single tool that produces a measurable physiological shift before you\'ve read anything else. Contact first. Theory after.'],
+        ['2','PHASE 2 — REGULATION','You work through six structured pillars that build your capacity to recognize activation states and move through them deliberately — so you\'re no longer at the mercy of a system that doesn\'t know the mission ended.'],
+        ['3','PHASE 3 — INTEGRATION','You build a repeatable daily practice from the seven tools — one that travels with you, requires no appointment, and doesn\'t depend on someone else being in the room.']
+      ]; %>
+      <% phases.forEach(function(p){ %>
+        <article class="pillar reveal">
+          <div class="pillar__badge"><%= p[0] %></div>
+          <h3 class="pillar__name"><%= p[1] %></h3>
+          <p class="pillar__desc"><%= p[2] %></p>
+        </article>
+      <% }); %>
+    </div>
   </div>
 </section>
 
-<!-- ============ 5. WHAT'S INSIDE — SIX PILLARS ============ -->
+<!-- ============ THE SIX PILLARS (supporting detail) ============ -->
 <section class="section pillars-section reveal" id="whats-inside">
   <div class="container">
-    <p class="label">THE OPERATIONAL SYSTEM</p>
+    <p class="label">INSIDE PHASE 2 — REGULATION</p>
     <h2 class="display">Six Pillars. Thirty Days. One Working Kit.</h2>
 
     <div class="pillars">
@@ -166,7 +184,7 @@
   </div>
 </section>
 
-<!-- ============ 6. THE SEVEN TOOLS ============ -->
+<!-- ============ THE SEVEN TOOLS (supporting detail) ============ -->
 <section class="section tools-section reveal" id="tools">
   <div class="container">
     <p class="label">THE TOOLKIT</p>
@@ -199,32 +217,68 @@
   </div>
 </section>
 
-<!-- ============ 7. WHO THIS IS FOR ============ -->
-<section class="section unit-section reveal" id="who">
-  <div class="container">
-    <p class="label">YOUR UNIT</p>
-    <h2 class="display">Built for Anyone Carrying It Alone.</h2>
+<!-- ============ ZONE 4 — PROOF & FILTER ============ -->
+<section class="section proof-section reveal" id="proof">
+  <div class="container container--narrow">
+    <p class="label">PROOF &amp; FILTER</p>
+    <h2 class="display">The Proof Structure — and Who This Is For.</h2>
 
-    <div class="unit-grid">
-      <% const unit = [
-        ['🪖','Veterans'],
-        ['⚓','Active-Duty Military'],
-        ['🚒','First Responders'],
-        ['🏋️','Tactical Athletes'],
-        ['💼','Shift Workers'],
-        ['🧠','Diagnosed or Suspected PTSD']
+    <div class="prose">
+      <p>
+        No specific client outcome numbers are published on this page. What is verifiable: the
+        90-Second Reset is drawn from peer-reviewed polyvagal and somatic research, and the protocol
+        is built on tools with documented clinical application — not proprietary theory. Day 1
+        produces a measurable shift or the guarantee activates. That's the proof structure here.
+      </p>
+      <p><strong>This is for you if:</strong></p>
+    </div>
+
+    <ul class="checklist">
+      <% const forYou = [
+        'You separated from service and your body still hasn\'t — you\'re home but you\'re not present, and you\'ve been trying to explain that gap to people who\'ve never felt it',
+        'You\'ve been through the VA or private care rotation — diagnosis, medication, referral, repeat — and you\'re still carrying the same weight you walked in with',
+        'You know what hypervigilance feels like from the inside, not as a clinical term but as a full-time job your body never clocks out of',
+        'You got a diagnosis that named it correctly but didn\'t change it, and you\'re still looking for the part where something actually shifts',
+        'You\'re functional — still standing, still working, still showing up — but you\'re exhausted by the cost of holding it together, and you know the current approach isn\'t it'
       ]; %>
-      <% unit.forEach(function(u){ %>
-        <div class="unit reveal">
-          <span class="unit__icon"><%= u[0] %></span>
-          <span class="unit__label"><%= u[1] %></span>
-        </div>
+      <% forYou.forEach(function(f){ %>
+        <li class="check reveal"><span class="check__mark">✓</span><span><%= f %></span></li>
       <% }); %>
+    </ul>
+
+    <div class="prose" style="margin-top:36px">
+      <p><strong>This is NOT for you if:</strong></p>
+    </div>
+
+    <ul class="checklist">
+      <% const notForYou = [
+        'You are currently in crisis and need immediate clinical intervention — this is not that, and it is not a substitute for it',
+        'You are looking for a licensed mental health treatment program — this is a self-directed somatic toolkit, not clinical care',
+        'You want a passive read that explains your nervous system without asking you to use the tools',
+        'You are unwilling to work directly with physical sensation — this protocol operates at the body level, and that is non-negotiable'
+      ]; %>
+      <% notForYou.forEach(function(n){ %>
+        <li class="check check--no reveal"><span class="check__mark">✕</span><span><%= n %></span></li>
+      <% }); %>
+    </ul>
+
+    <div class="prose" style="margin-top:40px">
+      <p>
+        I didn't build this from a case study or a certification alone. I built it because I was the
+        person cycling through the appointments, collecting the diagnoses, and leaving every session
+        with the same body I brought in. What I eventually realized wasn't a breakthrough insight — it
+        was a missing layer: nobody had ever worked with me at the level where the activation actually
+        lived. What I built is the toolkit I couldn't find when I needed it.
+      </p>
+      <p class="letter__sign">Bobby L. Harris</p>
+      <p class="letter__creds">
+        FMF Navy Corpsman (2002–2009) &nbsp;|&nbsp; OEF Veteran &nbsp;|&nbsp; Founder, Battlefield Essentials
+      </p>
     </div>
   </div>
 </section>
 
-<!-- ============ 8. WHAT YOU WILL HAVE ============ -->
+<!-- ============ WHAT YOU WILL HAVE (supporting detail) ============ -->
 <section class="section deliverables-section reveal" id="deliverables">
   <div class="container container--narrow">
     <p class="label">THE DELIVERABLES</p>
@@ -246,11 +300,20 @@
   </div>
 </section>
 
-<!-- ============ 9. PRICING / CTA ============ -->
+<!-- ============ ZONE 5 — THE CLOSE ============ -->
 <section class="section pricing-section reveal" id="pricing">
   <div class="container">
-    <p class="label">DEPLOY THE KIT</p>
-    <h2 class="display">Get the Manual. Run the Kit.</h2>
+    <p class="label">THE CLOSE</p>
+    <h2 class="display">Eighteen Years. $1.30 a Day.</h2>
+
+    <div class="prose">
+      <p>
+        Eighteen years. That's the cost-of-inaction number already in the room. Break it down: that's
+        roughly $1.30 per day over eighteen years of carrying something that had a $27 solution
+        available — one that works at the level where the problem actually lives. The question isn't
+        whether $27 is worth it. The question is what another month of the current approach costs.
+      </p>
+    </div>
 
     <div class="pricing">
       <article class="price-card price-card--featured reveal">
@@ -271,19 +334,38 @@
         <p class="price-card__price">$34</p>
         <ul class="price-card__list">
           <li>Physical field manual</li>
-          <li>Same content, physical carry format</li>
+          <li>Designed for carry, built for field use</li>
           <li>Built to live in your ruck</li>
         </ul>
         <a href="#" class="btn btn--ghost btn--block">NOTIFY ME</a>
       </article>
     </div>
 
-    <p class="guarantee">
-      30-day satisfaction guarantee. No BS.<br />
-      If the kit doesn't deliver, send one sentence and we'll refund it.
-    </p>
+    <aside class="callout reveal">
+      <p class="callout__title">The Guarantee</p>
+      <p>
+        If you use the toolkit for 30 days and don't feel a measurable shift in your nervous system
+        activation — not a vague sense of improvement, a <strong>measurable shift</strong> — send one
+        sentence. You get a full refund. No intake form. No justification required. No hoops.
+      </p>
+    </aside>
 
-    <!-- ============ 10. CRISIS NOTICE ============ -->
+    <aside class="callout reveal">
+      <p class="callout__title">Before the Print Edition Lands</p>
+      <p>
+        The print edition — designed for carry, built for field use — is in production now. When it
+        launches, the access model changes. Early digital adopters are in before that happens. There's
+        no artificial deadline here. There's a physical format coming that changes the offer, and
+        <strong>the current price does not survive that launch.</strong>
+      </p>
+    </aside>
+
+    <div class="final-cta reveal">
+      <p class="final-cta__line">Yes — I'm ready to give my nervous system a way out.</p>
+      <a href="/checkout" class="btn btn--primary btn--lg">GET THE MANUAL — $27</a>
+    </div>
+
+    <!-- ============ CRISIS NOTICE ============ -->
     <aside class="crisis" role="note">
       <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
       <p>
@@ -296,7 +378,7 @@
   </div>
 </section>
 
-<!-- ============ 11. NEWSLETTER SIGNUP ============ -->
+<!-- ============ NEWSLETTER SIGNUP ============ -->
 <section class="section newsletter-section reveal" id="newsletter">
   <div class="container container--narrow">
     <p class="label">STAY IN FORMATION</p>
