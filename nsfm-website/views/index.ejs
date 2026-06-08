@@ -1,409 +1,390 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= title %></title>
+<meta name="description" content="<%= meta_description %>">
+<meta name="facebook-domain-verification" content="8rbq4hnenoe60zotvh6b5wfp7c4r6k">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Barlow+Semi+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- ============ ZONE 1 — THE HOOK ============ -->
-<section class="hero" id="hero">
-  <div class="grain"></div>
-  <div class="hero__inner">
-    <div class="hero__content">
-      <p class="eyebrow">WRITTEN BY AN FMF NAVY CORPSMAN</p>
-      <hr class="rule rule--short" />
+<style>
+  :root{
+    --bg:#0c0b0a;
+    --panel:#100d0b;
+    --gold:#c8902c;
+    --gold-bright:#dca63f;
+    --ink:#f3efe8;
+    --muted:#9d968b;
+    --muted-2:#7e776c;
+    --line:rgba(255,255,255,.10);
+    --maxw:1180px;
+    --textw:740px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Barlow",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-      <h1 class="hero__title">
-        <span class="fade-up" style="--d:0.05s">A CORPSMAN'S GUIDE TO</span>
-        <span class="fade-up" style="--d:0.18s">LISTENING TO YOUR NERVOUS SYSTEM.</span>
-      </h1>
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 48px}
+  section{position:relative}
 
-      <p class="hero__sub fade-up" style="--d:0.32s">
-        The war within finally has a field manual.
-      </p>
+  /* shared type */
+  .eyebrow{display:inline-flex;flex-direction:column;align-items:flex-start}
+  .eyebrow .k{font-family:"Oswald";font-weight:500;font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .eyebrow .rule{width:60px;height:2px;background:var(--gold);margin-top:16px;opacity:.85}
+  .h2{font-family:"Oswald";font-weight:700;text-transform:uppercase;font-size:clamp(32px,4vw,56px);line-height:1.0;letter-spacing:.005em;color:#f6f2ea;text-wrap:balance}
+  .lead{font-size:clamp(16px,1.2vw,18.5px);line-height:1.68;color:#cfc8bc}
+  .lead.muted{color:var(--muted)}
+  .textcol{max-width:var(--textw)}
+  strong{color:#f0e9dc;font-weight:600}
+  .gold{color:var(--gold-bright)}
 
-      <p class="hero__body fade-up" style="--d:0.42s">
-        Six Pillars. Seven Tools. 30 days. A field-tested nervous system protocol
-        created by a Navy FMF Corpsman who spent 18 years struggling with PTSD. <strong>$27.</strong>
-      </p>
+  .btn{font-family:"Oswald";font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:1px solid transparent;padding:17px 30px;transition:.18s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--gold);color:#1a140a}
+  .btn-primary:hover{background:var(--gold-bright)}
+  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.22);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
 
-      <div class="hero__cta fade-up" style="--d:0.52s">
-        <a href="/checkout" class="btn btn--primary">GET THE MANUAL — $27</a>
-        <a href="#mechanism" class="btn btn--ghost">SEE HOW IT WORKS</a>
+  /* ============ HERO ============ */
+  .hero{display:flex;align-items:center;min-height:92vh;padding:96px 0 40px;
+    background:
+      radial-gradient(120% 90% at 78% 42%, rgba(200,144,44,.10), transparent 55%),
+      radial-gradient(140% 120% at 50% 0%, #1a1611, var(--bg) 60%);
+    overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 130%, transparent 62%, rgba(0,0,0,.55));pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .82fr;gap:64px;align-items:center;position:relative;z-index:2;width:100%}
+  .hero h1{font-family:"Oswald";font-weight:700;text-transform:uppercase;font-size:clamp(34px,4.2vw,58px);line-height:1.0;letter-spacing:.005em;margin:30px 0 22px;color:#f6f2ea;text-wrap:balance}
+  .hero .sub{font-family:"Oswald";font-weight:500;color:var(--gold-bright);font-size:clamp(17px,1.55vw,22px);line-height:1.42;max-width:30ch;margin-bottom:20px}
+  .hero .body{font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);max-width:44ch;margin-bottom:36px}
+  .hero .body b{color:#e7decf;font-weight:600}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap}
+  .book{justify-self:center;position:relative}
+  .book img{display:block;width:min(360px,36vw);height:auto;border-radius:3px;box-shadow:0 40px 80px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04)}
+  .book::before{content:"";position:absolute;inset:-8% -6% -10% -6%;z-index:-1;background:radial-gradient(closest-side, rgba(200,144,44,.18), transparent 70%);filter:blur(10px)}
+
+  /* trust bar */
+  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.28)}
+  .trust .row{display:flex;justify-content:center;flex-wrap:wrap;padding:18px 0}
+  .trust .item{font-family:"Oswald";font-weight:500;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#b8b0a3;padding:4px 28px;position:relative}
+  .trust .item:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);height:14px;width:1px;background:var(--line)}
+  .trust .item b{color:var(--gold);font-weight:600;margin-right:9px}
+
+  /* ============ generic section ============ */
+  .sec{padding:104px 0}
+  .sec.panel{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:46px}
+  .sec-head .h2{margin-top:26px}
+
+  /* mirror */
+  .mirror .lead + .lead{margin-top:22px}
+  .callout{border-left:3px solid var(--gold);background:linear-gradient(90deg,rgba(200,144,44,.06),transparent);padding:26px 30px;margin:44px 0}
+  .callout .tag{font-family:"Oswald";font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px}
+  .callout p{font-family:"Barlow";font-style:italic;font-size:clamp(18px,1.55vw,23px);line-height:1.5;color:#ece5d8}
+  .emph{background:rgba(255,255,255,.025);border:1px solid var(--line);padding:30px 32px;margin:40px 0 48px}
+  .emph p{font-size:clamp(15.5px,1.18vw,18px);line-height:1.66;color:#cfc8bc}
+  .emph .hl{font-family:"Oswald";font-weight:600;color:#f6f2ea;text-transform:none;font-size:1.06em}
+  .feel-label{font-family:"Oswald";font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin:0 0 22px}
+  .feel-list{list-style:none;display:flex;flex-direction:column;gap:18px;max-width:860px}
+  .feel-list li{display:flex;gap:18px;align-items:flex-start;font-size:clamp(15.5px,1.15vw,17.5px);line-height:1.5;color:#d8d1c5}
+  .feel-list .mk{flex:none;color:var(--gold);font-family:"Oswald";font-weight:700;margin-top:1px}
+
+  /* mechanism phases */
+  .mech .lead + .lead{margin-top:22px}
+  .phases-label{font-family:"Oswald";font-weight:500;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin:54px 0 22px}
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .phase{border:1px solid var(--line);border-top:2px solid var(--gold);background:rgba(255,255,255,.018);padding:30px 28px 34px;position:relative}
+  .phase .no{font-family:"Oswald";font-weight:700;font-size:46px;line-height:1;color:rgba(200,144,44,.45);letter-spacing:.02em}
+  .phase h3{font-family:"Oswald";font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:22px;color:#f3ecdf;margin:14px 0 8px}
+  .phase .ph-tag{font-family:"Oswald";font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .phase p{font-size:15px;line-height:1.62;color:var(--muted)}
+  .phase p b{color:#ddd4c6;font-weight:600}
+
+  /* proof */
+  .vbox{border:1px solid var(--line);border-left:3px solid var(--gold);background:rgba(255,255,255,.022);padding:30px 34px;margin-bottom:54px;max-width:920px}
+  .vbox p{font-size:clamp(15.5px,1.15vw,17.5px);line-height:1.66;color:#cfc8bc}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .col{border:1px solid var(--line);background:rgba(255,255,255,.015);padding:30px 30px 34px}
+  .col.no{opacity:.92}
+  .col h4{font-family:"Oswald";font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:11px;margin-bottom:22px}
+  .col.yes h4{color:var(--gold)}
+  .col.no h4{color:var(--muted-2)}
+  .col h4 .ic{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:none}
+  .col.yes h4 .ic{background:rgba(200,144,44,.16);color:var(--gold)}
+  .col.no h4 .ic{background:rgba(255,255,255,.05);color:var(--muted-2)}
+  .col ul{list-style:none;display:flex;flex-direction:column;gap:17px}
+  .col li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;line-height:1.5}
+  .col.yes li{color:#d6cfc3}
+  .col.no li{color:var(--muted)}
+  .col li .m{flex:none;margin-top:2px;font-family:"Oswald";font-weight:700;font-size:13px}
+  .col.yes li .m{color:var(--gold)}
+  .col.no li .m{color:var(--muted-2)}
+  .founder{margin-top:54px;border:1px solid var(--line);background:rgba(255,255,255,.02);padding:34px 36px;max-width:920px;position:relative}
+  .founder::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold),transparent)}
+  .founder p{font-family:"Barlow";font-style:italic;font-size:clamp(16px,1.25vw,19px);line-height:1.6;color:#d8d1c5}
+  .founder .sig{font-family:"Oswald";font-style:normal;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);font-size:14px;margin-top:20px;display:block}
+
+  /* close */
+  .close{background:
+      radial-gradient(120% 80% at 50% 0%, #1a1611, var(--panel) 65%);
+    border-top:1px solid var(--line)}
+  .bignum{font-family:"Oswald";font-weight:700;line-height:.86;color:#f6f2ea;font-size:clamp(64px,11vw,150px);letter-spacing:-.01em;margin:30px 0 6px}
+  .bignum span{color:var(--gold)}
+  .close .math{font-size:clamp(16px,1.2vw,18.5px);line-height:1.68;color:#cfc8bc;max-width:var(--textw);margin-top:18px}
+  .close .math + .math{margin-top:18px}
+  .guarantee{border:1px solid rgba(200,144,44,.4);background:rgba(200,144,44,.05);padding:30px 34px;margin:50px 0;max-width:920px}
+  .guarantee .tag{font-family:"Oswald";font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .guarantee p{font-size:clamp(15.5px,1.15vw,17.5px);line-height:1.64;color:#d8d1c5}
+  .urgency{display:flex;gap:16px;align-items:flex-start;max-width:920px;color:var(--muted);font-size:15.5px;line-height:1.6;border-top:1px solid var(--line);padding-top:30px}
+  .urgency .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:7px;box-shadow:0 0 0 4px rgba(200,144,44,.15)}
+  .urgency b{color:#e2d9ca;font-weight:600}
+
+  /* final cta band */
+  .finalcta{text-align:center;padding:96px 0 104px;background:
+      radial-gradient(100% 120% at 50% 0%, rgba(200,144,44,.10), transparent 60%), var(--bg);
+    border-top:1px solid var(--line)}
+  .finalcta .h2{margin:0 auto 14px;max-width:18ch}
+  .finalcta p{color:var(--muted);font-size:17px;max-width:42ch;margin:0 auto 36px;line-height:1.55}
+  .finalcta .btn-primary{font-size:16px;padding:21px 44px}
+  .finalcta .micro{margin-top:22px;font-family:"Oswald";font-weight:500;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;background:var(--panel)}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer .brand{font-family:"Oswald";font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:14px;color:#cabfa9}
+  footer .brand small{display:block;font-weight:400;font-size:11px;letter-spacing:.2em;color:var(--muted-2);margin-top:5px}
+  footer .disc{font-size:12.5px;color:var(--muted-2);max-width:520px;line-height:1.5}
+
+  @media(max-width:900px){
+    .container{padding:0 24px}
+    .hero{min-height:auto;padding:90px 0 40px}
+    .hero .wrap{grid-template-columns:1fr;gap:38px}
+    .book{order:-1}
+    .book img{width:min(230px,52vw)}
+    .hero .sub,.hero .body{max-width:none}
+    .phases{grid-template-columns:1fr}
+    .cols{grid-template-columns:1fr}
+    .sec{padding:74px 0}
+    .trust .item{padding:4px 14px;font-size:11px}
+    .trust .item:not(:last-child)::after{display:none}
+    .urgency,.finalcta .h2,.finalcta p{padding-left:0}
+  }
+</style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '26871724739163641');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=26871724739163641&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+</head>
+
+
+<body>
+
+  <!-- ===================== ZONE 1 — HERO ===================== -->
+  <section class="hero" data-screen-label="Hero">
+    <div class="container wrap">
+      <div class="copy">
+        <div class="eyebrow"><span class="k">Written by an FMF Navy Corpsman</span><span class="rule"></span></div>
+        <h1>A Corpsman's Guide to Listening to Your Nervous System.</h1>
+        <p class="sub">The war within finally has a field manual.</p>
+        <p class="body">Six pillars. Seven tools. 30 days. <b>A field-tested nervous system protocol created by a Navy corpsman who spent 18 years struggling with PTSD.</b> $27.</p>
+        <div class="cta-row">
+          <a href="#offer" class="btn btn-primary">Get the Manual — $27</a>
+          <a href="#letter" class="btn btn-ghost">Read the Letter from Bobby</a>
+        </div>
+      </div>
+      <div class="book"><img src="/images/nsfm-cover.png" alt="The Nervous System Field Manual"></div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="container row">
+      <div class="item"><b>★</b>FMF Navy Corpsman</div>
+      <div class="item"><b>✦</b>OEF Veteran</div>
+      <div class="item"><b>▮</b>Built from 18 Years of Field Testing</div>
+      <div class="item"><b>✚</b>PTSD Recovery Survivor</div>
+    </div>
+  </div>
+
+  <!-- ===================== ZONE 2 — THE MIRROR ===================== -->
+  <section class="sec mirror" data-screen-label="The Mirror">
+    <div class="container">
+      <div class="sec-head textcol">
+        <div class="eyebrow"><span class="k">You Already Know This Feeling</span></div>
+        <h2 class="h2">You've Done Everything Right on Paper.</h2>
+      </div>
+
+      <div class="textcol">
+        <p class="lead">You showed up to the appointments. You took the medications they offered and waited six weeks to find out they flattened everything without fixing anything. You sat in the chair, told the story again, gained the insight, and walked out with the same body you walked in with — still braced, still scanning, still wired for a threat that isn't there anymore.</p>
+        <p class="lead">You've cycled through enough providers that you've stopped expecting anything new. And somewhere underneath the exhaustion, you've started to wonder if this is just who you are now — if something in you got permanently altered, and the rest of your life is just managing it.</p>
+      </div>
+
+      <div class="callout textcol">
+        <span class="tag">The Almost Moment</span>
+        <p>In 2023 you finally got a diagnosis — a real one, with structure and language that fit — and for about a week it felt like the beginning of something, until you realized a name for the weight doesn't make it lighter.</p>
+      </div>
+
+      <div class="emph textcol">
+        <p><span class="hl">The diagnosis isn't wrong. The approach is.</span> Talk therapy and medication are top-down interventions — they work through the thinking mind, and your nervous system doesn't live there. Your nervous system isn't broken. It was <strong>trained</strong>. Precisely, effectively, and successfully trained — for an environment that no longer exists. That's not a defect. That's a mismatch. And mismatches can be corrected.</p>
+      </div>
+
+      <p class="feel-label">Here's what correcting it actually feels like</p>
+      <ul class="feel-list">
+        <li><span class="mk">→</span><span>Waking up without running a threat assessment of your own bedroom before your feet hit the floor.</span></li>
+        <li><span class="mk">→</span><span>Sitting in a crowded room without every exit already mapped and every person already categorized.</span></li>
+        <li><span class="mk">→</span><span>Feeling your shoulders drop — not because you told yourself to relax, but because your system actually stopped bracing.</span></li>
+        <li><span class="mk">→</span><span>Having a hard conversation without your body treating it like a contact engagement.</span></li>
+        <li><span class="mk">→</span><span>Sleeping through a noise that isn't a threat, because your nervous system finally knows the difference.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== ZONE 3 — THE MECHANISM ===================== -->
+  <section class="sec panel mech" data-screen-label="The Protocol">
+    <div class="container">
+      <div class="sec-head textcol">
+        <div class="eyebrow"><span class="k">The Protocol</span><span class="rule"></span></div>
+        <h2 class="h2">Six Pillars. Seven Tools. Thirty Days.</h2>
+      </div>
+
+      <div class="textcol">
+        <p class="lead">While everyone else tries to reach the nervous system through the mind — through reflection, reframing, and cognitive insight — we go straight to the body, because <strong>the nervous system processes sensation before it processes language</strong>, and you cannot think your way out of a state your body is still physically holding.</p>
+        <p class="lead">That's not a philosophy. It's physiology. And it's exactly why the Nervous System Regulation Protocol exists.</p>
+        <p class="lead">Everything named above — the cycling, the failed protocols, the 2 a.m. body that won't stand down, the diagnosis that explained everything and changed nothing — points to the same gap: nobody ever gave you tools that work at the level where the activation actually lives. This is the direct answer to that gap. <strong>Not a framework for understanding your trauma. A working toolkit for regulating the system that's been carrying it.</strong></p>
+      </div>
+
+      <p class="phases-label">The Three Phases</p>
+      <div class="phases">
+        <div class="phase">
+          <div class="no">01</div>
+          <div class="ph-tag">Phase 1</div>
+          <h3>Contact</h3>
+          <p>You prove to yourself on <b>Day 1</b> that your nervous system can be reached — using the 90-Second Reset, a single tool that produces a measurable physiological shift before you've read anything else. Contact first. Theory after.</p>
+        </div>
+        <div class="phase">
+          <div class="no">02</div>
+          <div class="ph-tag">Phase 2</div>
+          <h3>Regulation</h3>
+          <p>You work through <b>six structured pillars</b> that build your capacity to recognize activation states and move through them deliberately — so you're no longer at the mercy of a system that doesn't know the mission ended.</p>
+        </div>
+        <div class="phase">
+          <div class="no">03</div>
+          <div class="ph-tag">Phase 3</div>
+          <h3>Integration</h3>
+          <p>You build a repeatable daily practice from the <b>seven tools</b> — one that travels with you, requires no appointment, and doesn't depend on someone else being in the room.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="hero__cover fade-up" style="--d:0.4s">
-      <img
-        class="book-cover"
-        src="/images/book-cover.png"
-        width="1027" height="1531"
-        alt="Book cover: The Nervous System Field Manual — A Corpsman's Guide to the War Within, by Bobby L. Harris. Battlefield Essentials."
-        fetchpriority="high"
-      />
+  <!-- ===================== ZONE 4 — PROOF & FILTER ===================== -->
+  <section class="sec" data-screen-label="Proof &amp; Filter">
+    <div class="container">
+      <div class="sec-head textcol">
+        <div class="eyebrow"><span class="k">What's Verifiable</span><span class="rule"></span></div>
+        <h2 class="h2">Built on Documented Research. Proven on Day 1.</h2>
+      </div>
+
+      <div class="vbox">
+        <p>No specific client outcome numbers are published on this page. What <strong>is</strong> verifiable: the 90-Second Reset is drawn from peer-reviewed polyvagal and somatic research, and the protocol is built on tools with documented clinical application — <strong>not proprietary theory</strong>. Day 1 produces a measurable shift or the guarantee activates. That's the proof structure here.</p>
+      </div>
+
+      <div class="cols">
+        <div class="col yes">
+          <h4><span class="ic">✓</span>This Is For You If</h4>
+          <ul>
+            <li><span class="m">✓</span><span>You separated from service and your body still hasn't — you're home but you're not present, and you've been trying to explain that gap to people who've never felt it.</span></li>
+            <li><span class="m">✓</span><span>You've been through the VA or private care rotation — diagnosis, medication, referral, repeat — and you're still carrying the same weight you walked in with.</span></li>
+            <li><span class="m">✓</span><span>You know what hypervigilance feels like from the inside — not as a clinical term, but as a full-time job your body never clocks out of.</span></li>
+            <li><span class="m">✓</span><span>You got a diagnosis that named it correctly but didn't change it, and you're still looking for the part where something actually shifts.</span></li>
+            <li><span class="m">✓</span><span>You're functional — still standing, still working, still showing up — but you're exhausted by the cost of holding it together, and you know the current approach isn't it.</span></li>
+          </ul>
+        </div>
+        <div class="col no">
+          <h4><span class="ic">✕</span>This Is Not For You If</h4>
+          <ul>
+            <li><span class="m">✕</span><span>You are currently in crisis and need immediate clinical intervention — this is not that, and it is not a substitute for it.</span></li>
+            <li><span class="m">✕</span><span>You are looking for a licensed mental health treatment program — this is a self-directed somatic toolkit, not clinical care.</span></li>
+            <li><span class="m">✕</span><span>You want a passive read that explains your nervous system without asking you to use the tools.</span></li>
+            <li><span class="m">✕</span><span>You are unwilling to work directly with physical sensation — this protocol operates at the body level, and that is non-negotiable.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="founder" id="letter">
+        <p>I didn't build this from a case study or a certification alone. I built it because I was the person cycling through the appointments, collecting the diagnoses, and leaving every session with the same body I brought in. What I eventually realized wasn't a breakthrough insight — it was a missing layer: nobody had ever worked with me at the level where the activation actually lived. What I built is the toolkit I couldn't find when I needed it.</p>
+        <span class="sig">— Bobby L. Harris, FMF Navy Corpsman</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ AUTHORITY BAR ============ -->
-<section class="authority">
-  <div class="authority__track">
-    <span class="authority__item"><span class="authority__icon">★</span> FMF Navy Corpsman</span>
-    <span class="authority__sep">|</span>
-    <span class="authority__item"><span class="authority__icon">⚕</span> OEF Veteran</span>
-    <span class="authority__sep">|</span>
-    <span class="authority__item"><span class="authority__icon">▮</span> 18 Years of Field Testing</span>
-    <span class="authority__sep">|</span>
-    <span class="authority__item"><span class="authority__icon">✚</span> PTSD Recovery Survivor</span>
-  </div>
-</section>
+  <!-- ===================== ZONE 5 — THE CLOSE ===================== -->
+  <section class="sec close" id="offer" data-screen-label="The Decision">
+    <div class="container">
+      <div class="sec-head textcol">
+        <div class="eyebrow"><span class="k">The Decision</span><span class="rule"></span></div>
+        <div class="bignum">18 <span>Years</span></div>
+      </div>
 
-<!-- ============ ZONE 2 — THE MIRROR ============ -->
-<section class="section mirror-section reveal" id="mirror">
-  <div class="container container--narrow">
-    <p class="label">THE REALITY</p>
-    <h2 class="display">You Did Everything Right. Your Body Didn't Get the Memo.</h2>
+      <p class="math">Eighteen years. That's the cost-of-inaction number already in the room. Break it down: that's roughly <strong>$1.30 per day</strong> over eighteen years of carrying something that had a <strong>$27 solution</strong> available — one that works at the level where the problem actually lives.</p>
+      <p class="math">The question isn't whether $27 is worth it. The question is what another month of the current approach costs.</p>
 
-    <div class="prose">
-      <p>
-        You've done everything right on paper. You showed up to the appointments. You took the
-        medications they offered and waited six weeks to find out they flattened everything without
-        fixing anything. You sat in the chair, told the story again, gained the insight, and walked
-        out with the same body you walked in with — still braced, still scanning, still wired for a
-        threat that isn't there anymore. You've cycled through enough providers that you've stopped
-        expecting anything new. And somewhere underneath the exhaustion, you've started to wonder if
-        this is just who you are now — if something in you got permanently altered, and the rest of
-        your life is just managing it.
-      </p>
+      <div class="guarantee">
+        <span class="tag"><span>✚</span>The Guarantee</span>
+        <p>If you use the toolkit for 30 days and don't feel a <strong>measurable shift</strong> in your nervous system activation — not a vague sense of improvement, a measurable shift — send one sentence. You get a full refund. No intake form. No justification required. No hoops.</p>
+      </div>
+
+      <div class="urgency">
+        <span class="dot"></span>
+        <p>The print edition — designed for carry, built for field use — is in production now. When it launches, the access model changes. <b>Early digital adopters are in before that happens.</b> There's no artificial deadline here — there's a physical format coming that changes the offer, and the current price does not survive that launch.</p>
+      </div>
+    
+      <div class="offer-cta" style="margin-top:38px">
+        <a href="/checkout" class="btn btn-primary">Get the Manual — $27</a>
+        <p class="micro">Instant digital access · 30-day measurable-shift guarantee</p>
+      </div>
+</div>
+  </section>
+
+  <!-- final CTA band -->
+  <section class="finalcta" data-screen-label="Final CTA">
+    <div class="container">
+      <h2 class="h2">Give Your Nervous System a Way Out.</h2>
+      <p>Run the first drill today. Prove the door isn't locked.</p>
+      <a href="/checkout" class="btn btn-primary">Get the Manual — $27</a>
+      <div class="micro">Instant digital access · 30-day measurable-shift guarantee</div>
     </div>
+  </section>
 
-    <p class="label" style="margin-top:40px">ALMOST.</p>
-    <div class="prose">
-      <p>
-        In 2023 you finally got a diagnosis — a real one, with structure and language that fit — and
-        for about a week it felt like the beginning of something, until you realized a name for the
-        weight doesn't make it lighter.
-      </p>
+  <footer>
+    <div class="container row">
+      <div class="brand">Battlefield Essentials<small>Forged by Discipline</small></div>
+      <p class="disc">This is a self-directed somatic education toolkit, not clinical care or a substitute for professional treatment. If you are in crisis, contact emergency services or the Veterans Crisis Line: dial 988, then press 1.</p>
     </div>
+  </footer>
 
-    <blockquote class="pullquote">
-      The diagnosis isn't wrong. The approach is.
-    </blockquote>
 
-    <div class="prose">
-      <p>
-        Talk therapy and medication are top-down interventions — they work through the thinking mind,
-        and your nervous system doesn't live there. Your nervous system isn't broken. It was trained.
-        Precisely, effectively, and successfully trained — for an environment that no longer exists.
-        That's not a defect. That's a mismatch. And mismatches can be corrected.
-      </p>
-      <p><strong>Here's what correcting it actually feels like:</strong></p>
-    </div>
 
-    <ul class="checklist">
-      <% const correcting = [
-        'Waking up without running a threat assessment of your own bedroom before your feet hit the floor',
-        'Sitting in a crowded room without every exit already mapped and every person already categorized',
-        'Feeling your shoulders drop — not because you told yourself to relax, but because your system actually stopped bracing',
-        'Having a hard conversation without your body treating it like a contact engagement',
-        'Sleeping through a noise that isn\'t a threat, because your nervous system finally knows the difference'
-      ]; %>
-      <% correcting.forEach(function(c){ %>
-        <li class="check reveal"><span class="check__mark">✓</span><span><%= c %></span></li>
-      <% }); %>
-    </ul>
-  </div>
-</section>
+<script>
+  (function(){
+    document.querySelectorAll('a[href="/checkout"]').forEach(function(a){
+      a.addEventListener('click', function(){
+        if (window.fbq) fbq('track', 'InitiateCheckout', { value: 27.00, currency: 'USD' });
+      });
+    });
+  })();
+</script>
 
-<!-- ============ ZONE 3 — THE MECHANISM ============ -->
-<section class="section mechanism-section reveal" id="mechanism">
-  <div class="container">
-    <p class="label">THE MECHANISM</p>
-    <h2 class="display">We Go Straight to the Body.</h2>
-
-    <div class="prose">
-      <p>
-        While everyone else tries to reach the nervous system through the mind — through reflection,
-        reframing, and cognitive insight — we go straight to the body, because the nervous system
-        processes sensation before it processes language, and you cannot think your way out of a
-        state your body is still physically holding.
-      </p>
-    </div>
-
-    <blockquote class="pullquote pullquote--center">
-      That's not a philosophy. It's physiology.
-    </blockquote>
-
-    <div class="prose">
-      <p>
-        Everything named above — the cycling, the failed protocols, the 2 a.m. body that won't stand
-        down, the diagnosis that explained everything and changed nothing — points to the same gap:
-        nobody ever gave you tools that work at the level where the activation actually lives. The
-        <strong>Nervous System Regulation Protocol — Six Pillars, Seven Tools, Thirty Days</strong>
-        is the direct answer to that gap. Not a framework for understanding your trauma. A working
-        toolkit for regulating the system that's been carrying it.
-      </p>
-    </div>
-
-    <h3 class="subhead">The Three Phases</h3>
-    <div class="pillars">
-      <% const phases = [
-        ['1','PHASE 1 — CONTACT','You prove to yourself on Day 1 that your nervous system can be reached — using the 90-Second Reset, a single tool that produces a measurable physiological shift before you\'ve read anything else. Contact first. Theory after.'],
-        ['2','PHASE 2 — REGULATION','You work through six structured pillars that build your capacity to recognize activation states and move through them deliberately — so you\'re no longer at the mercy of a system that doesn\'t know the mission ended.'],
-        ['3','PHASE 3 — INTEGRATION','You build a repeatable daily practice from the seven tools — one that travels with you, requires no appointment, and doesn\'t depend on someone else being in the room.']
-      ]; %>
-      <% phases.forEach(function(p){ %>
-        <article class="pillar reveal">
-          <div class="pillar__badge"><%= p[0] %></div>
-          <h3 class="pillar__name"><%= p[1] %></h3>
-          <p class="pillar__desc"><%= p[2] %></p>
-        </article>
-      <% }); %>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE SIX PILLARS (supporting detail) ============ -->
-<section class="section pillars-section reveal" id="whats-inside">
-  <div class="container">
-    <p class="label">INSIDE PHASE 2 — REGULATION</p>
-    <h2 class="display">Six Pillars. Thirty Days. One Working Kit.</h2>
-
-    <div class="pillars">
-      <% const pillars = [
-        ['1','ORIENT','The 90-Second Reset. Prove to yourself on Day 1 that your nervous system can be reached.'],
-        ['2','ASSESS','The Symptom-to-Tool Triage Chart. Match the right tool to the right symptom in real time.'],
-        ['3','EQUIP','The Seven-Tool Kit. Your full arsenal. Know which three are yours.'],
-        ['4','EXECUTE','The 45-Minute Operator System. Stop running a 12-hour shift. Run sixteen 45-minute operations.'],
-        ['5','SUSTAIN','The Two-Sentence Containment Practice. Rebuild the wire between mission and home.'],
-        ['6','ADAPT','The Personal Field Update. Your monthly after-action review. The kit gets sharper every cycle.']
-      ]; %>
-      <% pillars.forEach(function(p){ %>
-        <article class="pillar reveal">
-          <div class="pillar__badge"><%= p[0] %></div>
-          <h3 class="pillar__name">PILLAR <%= p[0] %> — <%= p[1] %></h3>
-          <p class="pillar__desc"><%= p[2] %></p>
-        </article>
-      <% }); %>
-    </div>
-  </div>
-</section>
-
-<!-- ============ THE SEVEN TOOLS (supporting detail) ============ -->
-<section class="section tools-section reveal" id="tools">
-  <div class="container">
-    <p class="label">THE TOOLKIT</p>
-    <h2 class="display">Seven Tools. Pick Three. Carry Three. Master Three.</h2>
-
-    <ol class="tools">
-      <% const tools = [
-        ['90-Second Visual Orienting Reset','Baseline tension, pre-shift dread'],
-        ['Long Exhale Stack (4-in / 8-out)','0300 wake-up, sleep, anxiety spike'],
-        ['Box Breathing (4-4-4-4)','Pre-shift, focus reset, pre-confrontation'],
-        ['5-4-3-2-1 Sensory Grounding','Irritability, dissociation, spiral'],
-        ['Physical Contact Drill','Dissociation, numbness, floating'],
-        ['Bilateral Movement Drill','Brain fog, stuck, transitions'],
-        ['One-Sentence Containment Write','End of shift, before bed']
-      ]; %>
-      <% tools.forEach(function(t, i){ %>
-        <li class="tool reveal">
-          <span class="tool__num"><%= i + 1 %></span>
-          <div class="tool__body">
-            <h3 class="tool__name"><%= t[0] %></h3>
-            <p class="tool__use"><%= t[1] %></p>
-          </div>
-        </li>
-      <% }); %>
-    </ol>
-
-    <blockquote class="pullquote pullquote--center">
-      "When in doubt, run Tool 1. Always free. Always works."
-    </blockquote>
-  </div>
-</section>
-
-<!-- ============ ZONE 4 — PROOF & FILTER ============ -->
-<section class="section proof-section reveal" id="proof">
-  <div class="container container--narrow">
-    <p class="label">PROOF &amp; FILTER</p>
-    <h2 class="display">The Proof Structure — and Who This Is For.</h2>
-
-    <div class="prose">
-      <p>
-        No specific client outcome numbers are published on this page. What is verifiable: the
-        90-Second Reset is drawn from peer-reviewed polyvagal and somatic research, and the protocol
-        is built on tools with documented clinical application — not proprietary theory. Day 1
-        produces a measurable shift or the guarantee activates. That's the proof structure here.
-      </p>
-      <p><strong>This is for you if:</strong></p>
-    </div>
-
-    <ul class="checklist">
-      <% const forYou = [
-        'You separated from service and your body still hasn\'t — you\'re home but you\'re not present, and you\'ve been trying to explain that gap to people who\'ve never felt it',
-        'You\'ve been through the VA or private care rotation — diagnosis, medication, referral, repeat — and you\'re still carrying the same weight you walked in with',
-        'You know what hypervigilance feels like from the inside, not as a clinical term but as a full-time job your body never clocks out of',
-        'You got a diagnosis that named it correctly but didn\'t change it, and you\'re still looking for the part where something actually shifts',
-        'You\'re functional — still standing, still working, still showing up — but you\'re exhausted by the cost of holding it together, and you know the current approach isn\'t it'
-      ]; %>
-      <% forYou.forEach(function(f){ %>
-        <li class="check reveal"><span class="check__mark">✓</span><span><%= f %></span></li>
-      <% }); %>
-    </ul>
-
-    <div class="prose" style="margin-top:36px">
-      <p><strong>This is NOT for you if:</strong></p>
-    </div>
-
-    <ul class="checklist">
-      <% const notForYou = [
-        'You are currently in crisis and need immediate clinical intervention — this is not that, and it is not a substitute for it',
-        'You are looking for a licensed mental health treatment program — this is a self-directed somatic toolkit, not clinical care',
-        'You want a passive read that explains your nervous system without asking you to use the tools',
-        'You are unwilling to work directly with physical sensation — this protocol operates at the body level, and that is non-negotiable'
-      ]; %>
-      <% notForYou.forEach(function(n){ %>
-        <li class="check check--no reveal"><span class="check__mark">✕</span><span><%= n %></span></li>
-      <% }); %>
-    </ul>
-
-    <div class="prose" style="margin-top:40px">
-      <p>
-        I didn't build this from a case study or a certification alone. I built it because I was the
-        person cycling through the appointments, collecting the diagnoses, and leaving every session
-        with the same body I brought in. What I eventually realized wasn't a breakthrough insight — it
-        was a missing layer: nobody had ever worked with me at the level where the activation actually
-        lived. What I built is the toolkit I couldn't find when I needed it.
-      </p>
-      <p class="letter__sign">Bobby L. Harris</p>
-      <p class="letter__creds">
-        FMF Navy Corpsman (2002–2009) &nbsp;|&nbsp; OEF Veteran &nbsp;|&nbsp; Founder, Battlefield Essentials
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHAT YOU WILL HAVE (supporting detail) ============ -->
-<section class="section deliverables-section reveal" id="deliverables">
-  <div class="container container--narrow">
-    <p class="label">THE DELIVERABLES</p>
-    <h2 class="display">By Day 30, You Will Have:</h2>
-
-    <ul class="checklist">
-      <% const deliverables = [
-        'A personalized triage chart matched to your five most common symptoms',
-        'Three tools you have run on your own body more than fifteen times each',
-        'A shift map for the operation you actually live',
-        'A two-sentence log you can read back to yourself',
-        'A written debrief of what changed',
-        'Proof, in your own handwriting, that you are not the same man you were 30 days ago'
-      ]; %>
-      <% deliverables.forEach(function(d){ %>
-        <li class="check reveal"><span class="check__mark">✓</span><span><%= d %></span></li>
-      <% }); %>
-    </ul>
-  </div>
-</section>
-
-<!-- ============ ZONE 5 — THE CLOSE ============ -->
-<section class="section pricing-section reveal" id="pricing">
-  <div class="container">
-    <p class="label">THE CLOSE</p>
-    <h2 class="display">Eighteen Years. $1.30 a Day.</h2>
-
-    <div class="prose">
-      <p>
-        Eighteen years. That's the cost-of-inaction number already in the room. Break it down: that's
-        roughly $1.30 per day over eighteen years of carrying something that had a $27 solution
-        available — one that works at the level where the problem actually lives. The question isn't
-        whether $27 is worth it. The question is what another month of the current approach costs.
-      </p>
-    </div>
-
-    <div class="pricing">
-      <article class="price-card price-card--featured reveal">
-        <div class="price-card__flag">RECOMMENDED</div>
-        <h3 class="price-card__name">Digital Edition</h3>
-        <p class="price-card__price">$27</p>
-        <ul class="price-card__list">
-          <li>Instant PDF download</li>
-          <li>All six pillars + worksheets</li>
-          <li>Printable Quick Reference Card</li>
-        </ul>
-        <a href="/checkout" class="btn btn--primary btn--block">GET THE MANUAL — $27</a>
-      </article>
-
-      <article class="price-card reveal">
-        <div class="price-card__flag price-card__flag--soon">COMING SOON</div>
-        <h3 class="price-card__name">Print Edition</h3>
-        <p class="price-card__price">$34</p>
-        <ul class="price-card__list">
-          <li>Physical field manual</li>
-          <li>Designed for carry, built for field use</li>
-          <li>Built to live in your ruck</li>
-        </ul>
-        <a href="#" class="btn btn--ghost btn--block">NOTIFY ME</a>
-      </article>
-    </div>
-
-    <aside class="callout reveal">
-      <p class="callout__title">The Guarantee</p>
-      <p>
-        If you use the toolkit for 30 days and don't feel a measurable shift in your nervous system
-        activation — not a vague sense of improvement, a <strong>measurable shift</strong> — send one
-        sentence. You get a full refund. No intake form. No justification required. No hoops.
-      </p>
-    </aside>
-
-    <aside class="callout reveal">
-      <p class="callout__title">Before the Print Edition Lands</p>
-      <p>
-        The print edition — designed for carry, built for field use — is in production now. When it
-        launches, the access model changes. Early digital adopters are in before that happens. There's
-        no artificial deadline here. There's a physical format coming that changes the offer, and
-        <strong>the current price does not survive that launch.</strong>
-      </p>
-    </aside>
-
-    <div class="final-cta reveal">
-      <p class="final-cta__line">Yes — I'm ready to give my nervous system a way out.</p>
-      <a href="/checkout" class="btn btn--primary btn--lg">GET THE MANUAL — $27</a>
-    </div>
-
-    <!-- ============ CRISIS NOTICE ============ -->
-    <aside class="crisis" role="note">
-      <p class="crisis__title">⚕ IMPORTANT NOTICE</p>
-      <p>
-        This manual is not crisis intervention. If you are thinking about ending your life,
-        call the Veterans Crisis Line: dial <strong>988</strong> and press <strong>1</strong>,
-        or text <strong>838255</strong>.
-      </p>
-      <p class="crisis__close">The kit will be here. You have to be here first.</p>
-    </aside>
-  </div>
-</section>
-
-<!-- ============ NEWSLETTER SIGNUP ============ -->
-<section class="section newsletter-section reveal" id="newsletter">
-  <div class="container container--narrow">
-    <p class="label">STAY IN FORMATION</p>
-    <h2 class="display">Get the Field Updates.</h2>
-    <p class="newsletter__copy">
-      New tools, launch news, and the print edition drop — straight to your inbox.
-      No spam. Stand down anytime.
-    </p>
-
-    <form class="newsletter-form" id="newsletterForm" novalidate>
-      <label class="visually-hidden" for="newsletterEmail">Email address</label>
-      <input
-        class="newsletter-form__input"
-        id="newsletterEmail"
-        name="email"
-        type="email"
-        inputmode="email"
-        autocomplete="email"
-        placeholder="you@example.com"
-        required
-      />
-      <button class="btn btn--primary newsletter-form__btn" type="submit">ENLIST</button>
-    </form>
-    <p class="newsletter-form__status" id="newsletterStatus" role="status" aria-live="polite"></p>
-  </div>
-</section>
-
-<%- include('partials/footer') %>
+</body></html>
